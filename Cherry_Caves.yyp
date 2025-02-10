@@ -35,6 +35,10 @@
   "name":"Cherry_Caves",
   "resources":[
     {"id":{"name":"fnt_score","path":"fonts/fnt_score/fnt_score.yy",},},
+    {"id":{"name":"obj_block_brown","path":"objects/obj_block_brown/obj_block_brown.yy",},},
+    {"id":{"name":"obj_block_ch","path":"objects/obj_block_ch/obj_block_ch.yy",},},
+    {"id":{"name":"obj_block_red","path":"objects/obj_block_red/obj_block_red.yy",},},
+    {"id":{"name":"obj_block","path":"objects/obj_block/obj_block.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"Room0","path":"rooms/Room0/Room0.yy",},},
     {"id":{"name":"snd_cherry","path":"sounds/snd_cherry/snd_cherry.yy",},},

@@ -17,6 +17,10 @@
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"obj_block_brown","order":3,"path":"objects/obj_block_brown/obj_block_brown.yy",},
+    {"name":"obj_block_ch","order":4,"path":"objects/obj_block_ch/obj_block_ch.yy",},
+    {"name":"obj_block_red","order":2,"path":"objects/obj_block_red/obj_block_red.yy",},
+    {"name":"obj_block","order":1,"path":"objects/obj_block/obj_block.yy",},
     {"name":"snd_cherry","order":2,"path":"sounds/snd_cherry/snd_cherry.yy",},
     {"name":"snd_damage","order":4,"path":"sounds/snd_damage/snd_damage.yy",},
     {"name":"snd_goal","order":1,"path":"sounds/snd_goal/snd_goal.yy",},
