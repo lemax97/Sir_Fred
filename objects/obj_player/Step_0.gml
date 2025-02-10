@@ -1,10 +1,16 @@
 var _keyleft = keyboard_check(vk_left);
 var _keyright = keyboard_check(vk_right);
+var _keyup = keyboard_check(vk_up);
+var _keydown = keyboard_check(vk_down);
+var _jumping = keyboard_check_pressed(vk_space);
 
 var _move = _keyright - _keyleft;
+var _vmove = _keydown - _keyup;
 
-hsp = spd * _move;
+hsp = spd * _move;//speed multiply by direction
+vsp = vsp + grv;//vertical speed + gravity
 
+//walking
 if (_move != 0)
 {
 	image_xscale = _move;
@@ -15,4 +21,38 @@ else
 	sprite_index = spr_player_idle;
 }
 
-x += hsp;
+if ( place_meeting(x + hsp, y, obj_block))
+{
+	while (not place_meeting(x + sign(hsp), y, obj_block))
+	{
+		x += sign(hsp);	
+	}
+	hsp = 0;
+}
+
+x += hsp;//x + horisontal speed
+
+
+
+if (place_meeting(x, y + vsp, obj_block))
+{
+	while (not place_meeting(x, y + sign(vsp), obj_block))
+	{
+		y += sign(vsp);
+	}
+	vsp = 0;
+	grounded = true;
+}
+else
+{
+	grounded = false;
+}
+
+if (grounded and _jumping)
+{
+	vsp = -jspd;
+	grounded = false;
+	sprite_index = spr_player_idle;
+}
+
+y += vsp;
