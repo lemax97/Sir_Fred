@@ -14,12 +14,58 @@ vsp = vsp + grv;//vertical speed + gravity
 if (_move != 0)
 {
 	image_xscale = _move;
-	sprite_index = spr_player_walk;
+	idle = _move;
+	if (grounded)
+	{
+		sprite_index = spr_player_walk;
+	}
 }
 else
 {
-	sprite_index = spr_player_idle;
+	if (!climbing)
+	{
+		image_xscale = idle;//to provide correct rendering of idle mode
+		sprite_index = spr_player_idle;
+	}
 }
+
+// Jump
+if (grounded and _jumping)
+{
+	vsp = -jspd;
+	grounded = false;
+	//image_xscale = _move;
+	sprite_index = spr_player_jump;
+	
+}
+
+// Climbing
+if ( place_meeting(x, y + 1, obj_ladder))
+{
+	if (( _vmove < 0 ) or (_vmove == 0 and climbing)
+		or _vmove == 0 and place_meeting(x, y - 1, obj_ladder) 
+		or (_vmove > 0 and place_meeting(x, y + sprite_height, obj_ladder)))
+	{
+		climbing = true;
+	}
+	else
+	{
+		
+		climbing = false;
+	}
+}
+else
+{
+	climbing = false;
+}
+
+if ( climbing )
+{
+	vsp = _vmove * spd;
+	sprite_index = spr_player_climb;
+}
+
+// Horisontal collisions with blocks
 
 if ( place_meeting(x + hsp, y, obj_block))
 {
@@ -33,26 +79,22 @@ if ( place_meeting(x + hsp, y, obj_block))
 x += hsp;//x + horisontal speed
 
 
-
+// Vertical collisions with blocks
 if (place_meeting(x, y + vsp, obj_block))
 {
-	while (not place_meeting(x, y + sign(vsp), obj_block))
+	if (not climbing)
 	{
-		y += sign(vsp);
-	}
-	vsp = 0;
-	grounded = true;
+		while (not place_meeting(x, y + sign(vsp), obj_block))
+		{
+			y += sign(vsp);
+		}
+		vsp = 0;
+		grounded = true;
+	}//not climbing
 }
 else
 {
 	grounded = false;
-}
-
-if (grounded and _jumping)
-{
-	vsp = -jspd;
-	grounded = false;
-	sprite_index = spr_player_idle;
 }
 
 y += vsp;
