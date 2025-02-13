@@ -18,7 +18,7 @@ options = ["RESUME", "RESTART", "QUIT"];
 opt_number = array_length(options);
 menu_index = 0;
 
-if (room == room0)
+if (room == Room0)
 {
 	lives = 3;
 }

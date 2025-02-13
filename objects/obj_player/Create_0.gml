@@ -7,3 +7,5 @@ jspd = 10;
 climbing = false;
 
 idle = 1;
+
+randomize();

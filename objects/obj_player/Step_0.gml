@@ -35,7 +35,9 @@ if (grounded and _jumping)
 	vsp = -jspd;
 	grounded = false;
 	//image_xscale = _move;
+	//image_speed = 0.01;
 	sprite_index = spr_player_jump;
+	//image_speed = 1;
 	
 }
 
